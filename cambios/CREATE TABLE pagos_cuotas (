@@ -1,0 +1,13 @@
+CREATE TABLE pagos_cuotas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_deuda INT NOT NULL,
+    nro_cuota INT NOT NULL,
+    monto_cuota DECIMAL(10,2) NOT NULL,
+    monto_pagado DECIMAL(10,2) DEFAULT 0,
+    pagado TINYINT(1) DEFAULT 0,
+    fecha_vencimiento DATE,
+    fecha_pago DATETIME DEFAULT NULL,
+    metodo_pago VARCHAR(50),  -- efectivo, transferencia, etc.
+    observacion TEXT,
+    FOREIGN KEY (id_deuda) REFERENCES deudas(id)
+);

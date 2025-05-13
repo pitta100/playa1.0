@@ -1,0 +1,152 @@
+/* Estilos generales */
+.small-box {
+  position: relative;
+  color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+
+.small-box .inner h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.small-box .inner p {
+  font-size: 1.8rem;
+  color: #f8f9fa;
+}
+
+.small-box .icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 3rem;
+}
+
+.small-box-footer {
+  display: block;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 0 0 8px 8px;
+  margin-top: 15px;
+}
+
+.small-box-footer:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Colores personalizados para cada caja */
+.bg-success {
+  background-color: #28a745 !important; /* Color verde */
+}
+
+.bg-warning {
+  background-color: #ffc107 !important; /* Color amarillo */
+}
+
+.bg-danger {
+  background-color: #dc3545 !important; /* Color rojo */
+}
+
+.bg-primary {
+  background-color: #007bff !important; /* Color azul */
+}
+
+.bg-info {
+  background-color: #17a2b8 !important; /* Color aqua */
+}
+
+.bg-secondary {
+  background-color: #6c757d !important; /* Color gris */
+}
+
+/* Efecto hover para el "small-box" */
+.small-box:hover {
+  opacity: 0.8;
+}
+/* Estilo para el contenedor del icono */
+/* Estilo para el contenedor del icono */
+.small-box .icon {
+  display: flex;
+  justify-content: center;   /* Centra el contenido horizontalmente */
+  align-items: center;       /* Centra el contenido verticalmente */
+  width: 70px;               /* Ajusta el tamaño del contenedor del icono */
+  height: 70px;              /* Ajusta el tamaño del contenedor del icono */
+  background-size: cover;    /* La imagen se ajusta para cubrir todo el contenedor */
+  background-position: center; /* Centra la imagen dentro del contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  border-radius: 50%;        /* Hace que el contenedor sea redondo */
+  overflow: hidden;          /* Asegura que la imagen no se salga del borde */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle un efecto 3D */
+}
+
+
+/* Estilo para la imagen dentro del contenedor */
+.small-box .icon img {
+  width: 50%;     /* La imagen ocupa el 80% del tamaño del contenedor */
+  height: 50%;    /* La imagen ocupa el 80% del tamaño del contenedor */
+  object-fit: contain;  /* Ajusta la imagen para que se mantenga proporcional */
+}
+/* Estilo para el contenedor debajo del dashboard  */
+.card-header {
+  background-color: #17a2b8;
+  color: #fff;
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-body {
+  padding: 15px;
+  background-color: #f8f9fa;
+}
+
+.card-body h4, .card-body h3 {
+  color: #17a2b8;
+}
+
+.card-body h4 {
+  font-size: 1.5em;
+}
+
+.card-body h3 {
+  font-size: 2.2em;
+}
+/* Espacio entre filas de los contenedores de row*/
+.row {
+  margin-bottom: 20px;  /* Ajusta el valor según lo necesites */
+}/* Estilos para el botón de colapsar */
+#collapse-btn {
+  background: linear-gradient(45deg, rgba(0, 123, 255, 0.7), rgba(0, 255, 123, 0.7)); /* Fondo de rayas */
+  border-radius: 50%; /* Botón circular */
+  padding: 10px; /* Ajusta el tamaño del botón */
+  color: #fff; /* Color de la X */
+  font-size: 18px; /* Tamaño de la X */
+  transition: all 0.3s ease; /* Transición suave para cambios */
+}
+
+#collapse-btn:hover {
+  background: linear-gradient(45deg, rgba(0, 123, 255, 0.9), rgba(0, 255, 123, 0.9)); /* Cambio de color en hover */
+}
+
+#remove-btn {
+  background: linear-gradient(45deg, rgba(255, 0, 0, 0.7), rgba(255, 123, 0, 0.7)); /* Fondo de rayas para el botón de eliminar */
+  border-radius: 50%; /* Botón circular */
+  padding: 10px; /* Ajusta el tamaño del botón */
+  color: #fff; /* Color de la X */
+  font-size: 18px; /* Tamaño de la X */
+  transition: all 0.3s ease; /* Transición suave para cambios */
+}
+
+#remove-btn:hover {
+  background: linear-gradient(45deg, rgba(255, 0, 0, 0.9), rgba(255, 123, 0, 0.9)); /* Cambio de color en hover */
+}
+
+

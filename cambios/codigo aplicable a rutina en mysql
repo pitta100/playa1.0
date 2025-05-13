@@ -1,0 +1,28 @@
+BEGIN
+    DECLARE totalProductos INT;
+    DECLARE totalCompras FLOAT;
+    DECLARE totalVentas FLOAT;
+    DECLARE ganancias FLOAT;
+    DECLARE productoPocoStock INT; -- Corregido el tipo de datos
+    DECLARE ventasHoy FLOAT;
+
+    -- Asignación de valores a las variables
+    SET totalProductos = (SELECT COUNT(*) FROM productos p);
+    SET totalCompras = (SELECT SUM(p.precio_costo * p.stock) FROM productos p);
+    SET totalVentas = (SELECT SUM(v.total) FROM ventas v);
+    SET ganancias = (SELECT SUM(v.total) - SUM(p.precio_costo * v.cantidad) 
+                     FROM ventas v 
+                     INNER JOIN productos p ON v.id_producto = p.id);
+    SET productoPocoStock = (SELECT COUNT(1) FROM productos p WHERE p.stock <= p.stock_minimo); -- Corregido la lógica de "producto poco stock"
+    SET ventasHoy = (SELECT SUM(v.total) FROM ventas v WHERE v.fecha_venta = CURDATE());
+
+    -- Selección de los resultados
+    SELECT 
+        IFNULL(totalProductos, 0) AS totalProductos,
+        IFNULL(ROUND(totalCompras, 2), 0) AS totalCompras,
+        IFNULL(ROUND(totalVentas, 2), 0) AS totalVentas,
+        IFNULL(ROUND(ganancias, 2), 0) AS ganancias,
+        IFNULL(productoPocoStock, 0) AS productoPocoStock,
+        IFNULL(ROUND(ventasHoy, 2), 0) AS ventasHoy;
+    
+END

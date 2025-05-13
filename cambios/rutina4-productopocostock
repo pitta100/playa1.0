@@ -1,0 +1,8 @@
+BEGIN
+
+SELECT p.id, p.producto, p.stock, p.stock_minimo
+FROM productos p
+WHERE p.stock <= p.stock_minimo  -- Se agrega el prefijo p. para referirse correctamente a la columna stock_minimo
+ORDER BY p.stock ASC;
+
+END

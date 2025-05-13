@@ -1,0 +1,40 @@
+Paso 1: Descargar las librerías necesarias
+Descargar FullCalendar CSS
+
+Ve al siguiente enlace y descarga el archivo CSS:
+FullCalendar CSS v3.10.2
+Haz clic derecho y selecciona "Guardar como" para guardarlo en tu proyecto.
+Descargar jQuery
+
+Ve a jQuery (o una versión compatible con FullCalendar v3.10.2) y guarda el archivo JS en tu proyecto.
+Descargar Moment.js
+
+Ve a Moment.js v2.29.1 y guarda el archivo JS.
+Descargar FullCalendar JS
+
+Ve a FullCalendar JS v3.10.2 y guarda el archivo JS.
+Paso 2: Guardar las librerías en tu proyecto
+Crea una carpeta en tu proyecto llamada libs (o como prefieras) y guarda todos los archivos descargados dentro de ella.
+La estructura de tu proyecto debería verse algo así:
+
+bash
+Copiar
+/tu-proyecto
+  /libs
+    /fullcalendar.min.css
+    /jquery.min.js
+    /moment.min.js
+    /fullcalendar.min.js
+  /index.html (o el archivo donde estés usando el calendario)
+Paso 3: Modificar tu archivo HTML
+Una vez que hayas guardado las librerías, necesitas cambiar las URLs en tu archivo HTML para hacer referencia a los archivos locales en lugar de los enlaces CDN. Por ejemplo:
+
+html
+Copiar
+<!-- Bootstrap y otras librerías CSS -->
+<link rel="stylesheet" href="libs/fullcalendar.min.css" />
+
+<!-- jQuery y FullCalendar JS -->
+<script src="libs/jquery.min.js"></script>
+<script src="libs/moment.min.js"></script>
+<script src="libs/fullcalendar.min.js"></script>

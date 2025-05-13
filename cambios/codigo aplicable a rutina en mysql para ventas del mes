@@ -1,0 +1,13 @@
+BEGIN
+SELECT DATE(v.fecha_venta) AS fecha_venta,
+       SUM(ROUND(v.total, 3)) AS total_venta
+FROM ventas v
+WHERE DATE(v.fecha_venta) >= DATE_FORMAT(CURRENT_DATE, '%Y-%m-01')  -- Primer día del mes actual
+  AND DATE(v.fecha_venta) <= last_day(CURRENT_DATE)  -- Último día del mes actual
+GROUP BY DATE(v.fecha_venta);
+
+
+
+
+
+END

@@ -1,0 +1,4 @@
+ALTER TABLE deudas
+ADD COLUMN montoRefuerzo DECIMAL(10,2) NULL,
+ADD COLUMN cantidadRefuerzo INT NULL,
+ADD COLUMN fecha_refuerzo DATE NULL;

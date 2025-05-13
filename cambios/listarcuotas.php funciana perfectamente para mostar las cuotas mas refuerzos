@@ -1,0 +1,81 @@
+<h1 class="page-header">Lista de Cuotas</h1>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr style="background-color: #5DACCD; color:#fff">
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Cuota</th>
+                <th>Saldo Restante</th>
+                <th>Interés</th>
+                <th>Nuevo Pago</th>
+                <th>Fecha Refuerzo</th> <!-- Nueva columna -->
+                <th>Monto Refuerzo</th> <!-- Nueva columna -->
+            </tr>
+        </thead>
+        <tbody>
+            <?php  
+            $id_deuda = $_GET['id']; 
+
+            foreach($this->model->listarDeudas($id_deuda) as $deuda): 
+                $valorCuota = $deuda->saldo / $deuda->cuotas;
+                $saldoRestante = $deuda->saldo;
+                $fechaVencimiento = new DateTime($deuda->fecha);
+                $hoy = new DateTime();
+                
+                // Datos de refuerzo
+                $montoRefuerzoTotal = $deuda->montoRefuerzo;
+                $cantidadRefuerzo = $deuda->cantidadRefuerzo;
+                $fechaRefuerzo = new DateTime($deuda->fecha_refuerzo);
+                $montoRefuerzoUnitario = ($cantidadRefuerzo > 0) ? ($montoRefuerzoTotal / $cantidadRefuerzo) : 0;
+                $contadorRefuerzos = 0;
+
+                for ($i = 1; $i <= $deuda->cuotas; $i++): 
+                    $fechaVencimiento->modify('+1 month');
+                    $saldoRestante -= $valorCuota;
+
+                    $diferenciaDias = $hoy->diff($fechaVencimiento)->days; 
+                    $interes = 0;
+                    $nuevoPago = $valorCuota;
+
+                    if ($diferenciaDias > 5 && $hoy > $fechaVencimiento) {
+                        $interes = $valorCuota * 0.03;
+                        $nuevoPago += $interes;
+                    }
+
+                    // Por defecto vacíos los campos de refuerzo
+                    $mostrarFechaRefuerzo = "-";
+                    $mostrarMontoRefuerzo = "-";
+
+                    // Verificamos si en este vencimiento toca refuerzo
+                    if ($cantidadRefuerzo > 0 && $fechaVencimiento->format('Y-m-d') == $fechaRefuerzo->format('Y-m-d') && $contadorRefuerzos < $cantidadRefuerzo) {
+                        $mostrarFechaRefuerzo = $fechaRefuerzo->format('d/m/Y');
+                        $mostrarMontoRefuerzo = number_format($montoRefuerzoUnitario, 0, ',', '.');
+
+                        // 🚀 Ahora sumamos 12 meses para el próximo refuerzo
+                        $fechaRefuerzo->modify('+12 months');
+                        $contadorRefuerzos++;
+                    }
+            ?>
+            <tr>
+                <td><?php echo htmlspecialchars($deuda->cliente_nombre); ?></td>
+                <td><?php echo $fechaVencimiento->format('d/m/Y'); ?></td>
+                <td><?php echo number_format($valorCuota, 0, ',', '.'); ?></td>
+                <td><?php echo number_format(max($saldoRestante, 0), 0, ',', '.'); ?></td>
+                <td>
+                    <?php 
+                    if ($interes > 0) {
+                        echo number_format($interes, 0, ',', '.');
+                    } else {
+                        echo '-';
+                    }
+                    ?>
+                </td>
+                <td><?php echo number_format($nuevoPago, 0, ',', '.'); ?></td>
+                <td><?php echo $mostrarFechaRefuerzo; ?></td>
+                <td><?php echo $mostrarMontoRefuerzo; ?></td>
+            </tr>
+            <?php endfor; endforeach; ?>
+        </tbody>
+    </table>
+</div>

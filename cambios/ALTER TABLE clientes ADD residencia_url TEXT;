@@ -1,0 +1,3 @@
+ALTER TABLE clientes ADD residencia_url TEXT;
+
+ALTER TABLE clientes ADD residencia_url TEXT AFTER adressWork;

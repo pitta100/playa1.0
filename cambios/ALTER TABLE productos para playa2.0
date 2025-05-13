@@ -1,0 +1,9 @@
+ALTER TABLE productos 
+ADD COLUMN precio_financiado DECIMAL(15,2) DEFAULT 0,
+ADD COLUMN entrega_minima DECIMAL(15,2) DEFAULT 0,
+ADD COLUMN cuotas_minimas DECIMAL(15,2) DEFAULT 0;
+
+ALTER TABLE productos
+ADD COLUMN cant_refuerzo INT DEFAULT 0,
+ADD COLUMN monto_minimo_refuerzo BIGINT DEFAULT 0;
+

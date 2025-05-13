@@ -1,0 +1,1 @@
+ALTER TABLE deudas ADD COLUMN intereses INT(11) DEFAULT 0;

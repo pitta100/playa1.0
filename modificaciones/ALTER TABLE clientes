@@ -1,0 +1,7 @@
+ALTER TABLE clientes 
+ADD COLUMN adressWork VARCHAR(255) NULL,
+ADD COLUMN phoneWork VARCHAR(50) NULL,
+ADD COLUMN comprobanteIngreso VARCHAR(255) NULL,
+ADD COLUMN cedulaTributaria VARCHAR(255) NULL,
+ADD COLUMN facturasLegalesEmitidas VARCHAR(255) NULL,
+ADD COLUMN cedulaIdentidad VARCHAR(255) NULL;

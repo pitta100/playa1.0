@@ -1,0 +1,2 @@
+ALTER TABLE deudas
+ADD COLUMN frecuencia_pagos ENUM('Mensual', 'Anual', 'Semanal', 'Quincenal') NOT NULL DEFAULT 'Anual';

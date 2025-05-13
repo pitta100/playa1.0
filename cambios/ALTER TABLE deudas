@@ -1,0 +1,6 @@
+ALTER TABLE deudas
+ADD COLUMN tipo_entrega VARCHAR(20) DEFAULT NULL,
+ADD COLUMN entrega_inicial DECIMAL(10,2) DEFAULT 0,
+ADD COLUMN entregas_restantes INT DEFAULT 0,
+ADD COLUMN monto_estimado DECIMAL(10,2) DEFAULT 0,
+ADD COLUMN venci_entrega_restante DATETIME DEFAULT NULL;
